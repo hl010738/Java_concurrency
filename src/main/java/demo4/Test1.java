@@ -16,6 +16,20 @@ public class Test1 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } finally {
+                System.out.println(countDownLatch.getCount());
+                countDownLatch.countDown();
+            }
+        }).start());
+
+
+        IntStream.range(0, 2).forEach(i -> new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+                System.out.println("==========");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                System.out.println(countDownLatch.getCount());
                 countDownLatch.countDown();
             }
         }).start());
@@ -23,8 +37,8 @@ public class Test1 {
         System.out.println("子线程启动完毕");
 
         try {
-            //countDownLatch.await();
-            countDownLatch.await(200, TimeUnit.MILLISECONDS);
+            countDownLatch.await();
+            //countDownLatch.await(200, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
