@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
-public class Test1 {
+public class FutureTest1 {
     public static void main(String[] args) throws Exception {
 
         Callable<Integer> callable = () -> {
